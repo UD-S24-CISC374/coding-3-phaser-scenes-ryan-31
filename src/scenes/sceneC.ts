@@ -1,6 +1,6 @@
 import Phaser from "phaser";
 
-export default class SceneA extends Phaser.Scene {
+export default class SceneC extends Phaser.Scene {
     private platforms?: Phaser.Physics.Arcade.StaticGroup;
     private player?: Phaser.Physics.Arcade.Sprite;
     private cursors?: Phaser.Types.Input.Keyboard.CursorKeys;
@@ -12,11 +12,11 @@ export default class SceneA extends Phaser.Scene {
     private subtext: Phaser.GameObjects.Text;
 
     constructor() {
-        super({ key: "SceneA" });
+        super({ key: "SceneC" });
     }
 
     create() {
-        this.add.image(400, 300, "backgroundA");
+        this.add.image(400, 300, "backgroundC");
         this.platforms = this.physics.add.staticGroup();
         const ground = this.platforms.create(400, 600, "ground") as Phaser.Physics.Arcade.Sprite;
         ground.setScale(2).refreshBody();
@@ -54,8 +54,8 @@ export default class SceneA extends Phaser.Scene {
 
         this.stars = this.physics.add.group({
             key: "star",
-            repeat: 2,
-            setXY: { x: 350, y: 0, stepX: 70 }
+            repeat: 9,
+            setXY: { x: 130, y: 0, stepX: 70 }
         })
 
         this.stars.children.iterate(c => {
@@ -71,7 +71,7 @@ export default class SceneA extends Phaser.Scene {
             fontSize: "32px",
             color: "#FF0000"
         })
-        this.subtext = this.add.text(16, 16, 'Collect 3 stars to move on!', {
+        this.subtext = this.add.text(16, 16, 'Now collect 10 stars to win!', {
             fontSize: "32px",
             color: "#FF0000"
         })
@@ -116,7 +116,7 @@ export default class SceneA extends Phaser.Scene {
         }
 
         if (this.stars && this.stars.countActive(true) === 0) {
-            this.scene.start("SceneB");
+            this.scene.start("FinalScene");
         }
 
     }
