@@ -31,7 +31,7 @@ export default class FinalScene extends Phaser.Scene {
         })
 
 
-        this.scoreText = this.add.text(65, 30, `Your final score was: ${this.score}`, {
+        this.scoreText = this.add.text(190, 200, `Your final score was: ${this.score}`, {
             fontSize: "32px",
             color: "#FF0000"
         })
