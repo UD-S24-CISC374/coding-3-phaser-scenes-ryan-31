@@ -26,7 +26,7 @@ export default class StartScreen extends Phaser.Scene {
             color: "#fff"
         })
 
-        this.scoreText = this.add.text(65, 30, 'score: 0', {
+        this.scoreText = this.add.text(65, 30, 'Score: 0', {
             fontSize: "32px",
             color: "#FF0000"
         })
@@ -43,7 +43,7 @@ export default class StartScreen extends Phaser.Scene {
         }).setInteractive();
 
         this.startButton.on('pointerdown', () => {
-            this.scene.start("SceneA");
+            this.scene.start("SceneA", {score: this.score});
         });
 
     }

@@ -15,6 +15,10 @@ export default class FinalScene extends Phaser.Scene {
         super({key: "FinalScene"});
     }
 
+    init(data: { score: number }) {
+        this.score = data.score;
+    }
+    
     create() {
         this.add.image(400, 300, "startB");
         this.platforms = this.physics.add.staticGroup();

@@ -15,6 +15,12 @@ export default class SceneC extends Phaser.Scene {
         super({ key: "SceneC" });
     }
 
+    
+    init(data: { score: number }) {
+        this.score = data.score;
+    }
+
+
     create() {
         this.add.image(400, 300, "backgroundC");
         this.platforms = this.physics.add.staticGroup();
@@ -67,7 +73,7 @@ export default class SceneC extends Phaser.Scene {
         this.physics.add.collider(this.stars, this.platforms)
         this.physics.add.overlap(this.player, this.stars, this.handleCollectStar, undefined, this)
     
-        this.scoreText = this.add.text(16, 60, 'score: 0', {
+        this.scoreText = this.add.text(16, 60, `Score: ${this.score}`, {
             fontSize: "32px",
             color: "#FF0000"
         })
@@ -116,7 +122,7 @@ export default class SceneC extends Phaser.Scene {
         }
 
         if (this.stars && this.stars.countActive(true) === 0) {
-            this.scene.start("FinalScene");
+            this.scene.start("FinalScene", {score: this.score});
         }
 
     }
